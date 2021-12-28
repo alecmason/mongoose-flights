@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>Flights</title>
 </head>
 <body>
-    
+    <a href="./flights/new">Add Flight</a>
+    <h2>All Flights</h2>
+    <table>
+        <thead>
+          <tr>
+            <th>Airline</th>
+            <th>Airport</th>
+            <th>flight Number</th>
+            <th>Departure Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% flightDocuments.forEach(f => { %>
+            <tr>
+                <td><%= f.airline %></td>
+                <td><%= f.airport %></td>
+                <td><%= f.flightNo %></td>
+                <td><%= f.departs %></td>
+              </tr>
+          <% }) %>
+        </tbody>
+      </table>
 </body>
 </html>
