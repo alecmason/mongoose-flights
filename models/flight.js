@@ -21,6 +21,7 @@ const flightSchema = new Schema({
         type: Date,
         default: function () {
             return new Date().getFullYear();
+            // var years = new Date(new Date().setFullYear(new Date().getFullYear())).getFullYear(); //as you want year from here
         }
     }
 })
