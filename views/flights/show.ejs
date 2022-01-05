@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/header') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <title>Flight Detail</title>
-</head>
-
-<body>
-    <a href="/flights">All Flights</a>
     <section id="show-page">
         <div>Airline:</div>
         <dir>
@@ -62,6 +51,32 @@
         </label>
         <input type="submit" value="Add Destination" />
     </form>
-</body>
 
-</html>
+    <% if (tickets.length){ %>
+        <h2>Tickets</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Seat</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% tickets.forEach(function(t) { %>
+                    <tr>
+                        <td>
+                            <%= t.seat %>
+                        </td>
+                        <td>$<%= t.price %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+            <h2>No Tickets Yet</h3>
+                <% }; %>
+
+
+                    <a href='/flights/<%=flight._id%>/tickets/new'><button>New Ticket</button></a>
+                    <%- include('../partials/footer') %>

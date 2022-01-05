@@ -1,4 +1,5 @@
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
 
 module.exports = {
 	index,
@@ -9,19 +10,18 @@ module.exports = {
 
 function index(req, res) {
 	Flight.find({}, function (err, flightDocuments) {
-
-		// respond to the client after the db query
-		// res.render
-		// aka inside the callback function
 		console.log(flightDocuments, ' <- flightDocuments')
 		res.render('flights/index', {
+			title: 'Flights',
 			flightDocuments
 		})
 	})
 }
 
 function newFlight(req, res) {
-	res.render('flights/new');
+	res.render('flights/new', {
+		title: 'New Flight'
+	});
 }
 
 function create(req, res) {
@@ -30,8 +30,14 @@ function create(req, res) {
 	})
 }
 
-function show(req, res) {
-	Flight.findById(req.params.id, function(err, flightDocument){
-		res.render('flights/show', { flight: flightDocument });
-	})
+function show(req, res){
+    Flight.findById(req.params.id, function(err, flightDocument){
+        Ticket.find({flight: flightDocument._id}, function(err, ticketDocuments){
+            res.render('flights/show', {
+                title: 'Flight Details', 
+                flight: flightDocument, 
+                tickets: ticketDocuments
+            });
+        })
+    });
 }
