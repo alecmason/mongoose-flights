@@ -15,7 +15,7 @@
         </dir>
         <div>Departure Date</div>
         <dir>
-            <%= flight.departs.toLocaleDateString("en-US", {timeZone:"UTC"}) %>
+            <%= flight.departs.toLocaleDateString("en-US", {timeZone:"UTC"} - 1) %>
         </dir>
 
         <div>Destinations</div>
