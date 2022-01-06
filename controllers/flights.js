@@ -31,13 +31,18 @@ function create(req, res) {
 }
 
 function show(req, res){
-    Flight.findById(req.params.id, function(err, flightDocument){
-        Ticket.find({flight: flightDocument._id}, function(err, ticketDocuments){
+	Flight.findById(req.params.id, function(err, flight) {
+		console.log(flight, '<- flight')
+		console.log(flight._id, '<- flight._id')
+		
+		Ticket.find({flight: flight._id}, function(err, tickets) {
+			console.log(tickets, '<- tickets')
             res.render('flights/show', {
                 title: 'Flight Details', 
-                flight: flightDocument, 
-                tickets: ticketDocuments
+                flight,
+                tickets
             });
+
         })
     });
 }

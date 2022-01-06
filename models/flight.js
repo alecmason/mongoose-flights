@@ -32,8 +32,7 @@ const flightSchema = new Schema({
             // return new Date().setFullYear(new Date().getFullYear() + 1);
             
             // return new Date(new Date().setFullYear(new Date().getFullYear() + 1))
-
-        },
+        },    
     },
     destinations: [destinationSchema]
 })
