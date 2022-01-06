@@ -32,12 +32,7 @@ const flightSchema = new Schema({
             let year = d.getFullYear()
             console.log(year, d)
             let c = new Date(year + 1)
-
             return c;
-
-            // return new Date().setFullYear(new Date().getFullYear() + 1);
-            
-            // return new Date(new Date().setFullYear(new Date().getFullYear() + 1))
         },    
     },
     destinations: [destinationSchema]
