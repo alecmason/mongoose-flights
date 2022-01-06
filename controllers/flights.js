@@ -10,7 +10,6 @@ module.exports = {
 
 function index(req, res) {
 	Flight.find({}, function (err, flightDocuments) {
-		console.log(flightDocuments, ' <- flightDocuments')
 		res.render('flights/index', {
 			title: 'Flights',
 			flightDocuments
@@ -43,11 +42,7 @@ function create(req, res) {
 
 function show(req, res){
 	Flight.findById(req.params.id, function(err, flight) {
-		console.log(flight, '<- flight')
-		console.log(flight._id, '<- flight._id')
-
 		Ticket.find({flight: flight._id}, function(err, tickets) {
-			console.log(tickets, '<- tickets')
             res.render('flights/show', {
                 title: 'Flight Details', 
                 flight,
